@@ -1,4 +1,4 @@
-User Data script:
+Enter the following into the User Data form:
 
     #!/bin/bash
     # update the yum cache
