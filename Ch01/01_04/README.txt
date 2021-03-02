@@ -4,12 +4,11 @@ Change to the root user after logging in:
 
 Add the aptitude key for the Jenkins application:
 
-	wget https://pkg.jenkins.io/debian-stable/jenkins.io.key
-	apt-key add jenkins.io.key
+    wget -q -O - https://pkg.jenkins.io/debian-stable/jenkins.io.key | sudo apt-key add -
 
 Add the Jenkins debian repo to the aptitude sources list:
 
-     echo "deb http://pkg.jenkins.io/debian-stable binary/" > /etc/apt/sources.list.d/jenkins.list
+    echo "deb https://pkg.jenkins.io/debian-stable binary/" > /etc/apt/sources.list.d/jenkins.list
 
 Update the source lists and upgrade any out of date packages:
 
@@ -18,11 +17,15 @@ Update the source lists and upgrade any out of date packages:
 
 Install the software for the Jenkins master:  openjdk-8-jdk, nginx, and jenkins.
 
-    apt install -y openjdk-8-jdk
-    apt install -y nginx
-    apt install -y jenkins
+Install JDK and nginx first:
+    apt -y install -y openjdk-11-jdk nginx
+
+Then install jenkins:
+
+    apt -y install -y jenkins
 
 Confirm that jenkins and nginx are installed:
 
-    ps -elf | grep nginx
-    ps -elf | grep jenkins
+    systemctl status nginx  | grep Active
+    systemctl status jenkins  | grep Active
+
