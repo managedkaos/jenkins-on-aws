@@ -18,11 +18,11 @@ Update the source lists and upgrade any out of date packages:
 Install the software for the Jenkins master:  openjdk-8-jdk, nginx, and jenkins.
 
 Install JDK and nginx first:
-    apt -y install -y openjdk-11-jdk nginx
+    apt -y install openjdk-11-jdk nginx
 
 Then install jenkins:
 
-    apt -y install -y jenkins
+    apt -y install jenkins
 
 Confirm that jenkins and nginx are installed:
 
