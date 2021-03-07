@@ -33,4 +33,3 @@ Once the configuration is testing without errors, reload the configuration:
     systemctl reload nginx
 
 Now open a browser to the instance's address and look for the "Unlock Jenkins" page.
-
