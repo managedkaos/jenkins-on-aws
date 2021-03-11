@@ -1,17 +1,25 @@
 Enter the following script into an Execute Shell build step to deploy your
 elastic beanstalk application:
 
-    #!/bin/bash -xe
+#!/bin/bash -xe
 
-    # intialize the application
-    eb init my-eb-app2 --platform python-3.6 --region us-west-2
+APPLICATION=YOUR_APPLICATION_NAME_HERE
+REGION=YOUR_REGION_NAME_HERE
+ENVIRONMENT=YOUR_ENVIRONMENT_NAME_HERE
+PLATFORM=YOUR_PLATFORM_HERE
 
-    # select the development environment
-    eb use development
+# confirm the role being used
+aws sts get-caller-identity
 
-    # deploy the application
-    eb deploy
+# intialize the application
+eb init "${APPLICATION}" --platform "${PLATFORM}"  --region "${REGION}"
 
-    # get the deployment's health and status information
-    eb health
-    eb status
+# select the environment
+eb use "${ENVIRONMENT}"
+
+# deploy the application
+eb deploy
+
+# get the deployment's health and status information
+eb health
+eb status
